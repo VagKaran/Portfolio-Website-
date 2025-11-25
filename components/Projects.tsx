@@ -23,6 +23,16 @@ const projects: Project[] = [
     impact: 'Automated Workflows',
     tags: ['Python', 'Pandas', 'Matplotlib', 'Data Cleaning'],
     link: 'https://github.com/VagKaran/Python_Data_Project'
+  },
+  {
+    id: '3',
+    title: 'Personal Portfolio Website',
+    category: 'Web Development',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop',
+    description: 'A modern, interactive portfolio website built from scratch using React and TypeScript. Features a custom responsive design, smooth framer-motion animations, and a clean UI/UX to professionally showcase data analytics and project management work.',
+    impact: 'Personal Branding',
+    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+    link: 'https://github.com/VagKaran/Portfolio-Website-'
   }
 ];
 
@@ -32,7 +42,7 @@ const Projects: React.FC = () => {
   return (
     <motion.section 
       id="projects" 
-      className="py-24 bg-slate-50"
+      className="py-24 bg-primary-300"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
@@ -50,13 +60,13 @@ const Projects: React.FC = () => {
             href="https://github.com/VagKaran" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="hidden md:block text-primary-600 hover:text-primary-700 font-medium transition-colors"
+            className="hidden md:block text-slate-900 hover:text-primary-700 font-medium transition-colors"
           >
             View Github Profile &rarr;
           </a>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
             <motion.div
               key={project.id}
@@ -79,10 +89,10 @@ const Projects: React.FC = () => {
                 <div className="flex justify-between items-start mb-2">
                   <span className="text-xs font-bold text-primary-600 uppercase tracking-wider">{project.category}</span>
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-2">{project.title}</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">{project.title}</h3>
                 
                 <div className="flex flex-wrap gap-2 mt-4">
-                  {project.tags.map(tag => (
+                  {project.tags.slice(0, 3).map(tag => (
                     <span key={tag} className="px-2 py-1 text-xs font-medium bg-slate-100 text-slate-600 rounded-md">
                       {tag}
                     </span>
@@ -97,7 +107,7 @@ const Projects: React.FC = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                 >
                   <Zap className="w-12 h-12 text-white mb-3 mx-auto" />
-                  <p className="text-white font-bold text-2xl mb-2">{project.impact}</p>
+                  <p className="text-white font-bold text-xl mb-2">{project.impact}</p>
                   <p className="text-primary-200 text-sm">Click to view details</p>
                 </motion.div>
               </div>
@@ -167,9 +177,6 @@ const Projects: React.FC = () => {
                       View Code
                     </a>
                   )}
-                  {/* Removed duplicate Live Demo button if no separate live link is provided, 
-                      or we can keep it generic if there was a live site. 
-                      For now, focusing on the requested Github links. */}
                 </div>
               </div>
             </motion.div>
